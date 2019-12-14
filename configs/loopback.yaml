@@ -4,7 +4,7 @@ strategy: sync
 checker:
   type: url
   parameters:
-    url: http://localhost:1337/ping
+    url: http://localhost:8055/ping
     timeout: 5
 retryPolicy:
   initialDelay: 1
