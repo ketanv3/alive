@@ -1,0 +1,12 @@
+name: loopback
+disabled: false
+strategy: sync
+checker:
+  type: url
+  parameters:
+    url: http://localhost:1337/ping
+    timeout: 5
+retryPolicy:
+  initialDelay: 1
+  backoffMultiplier: 2
+  maxRetries: 3

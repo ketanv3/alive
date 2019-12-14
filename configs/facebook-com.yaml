@@ -1,0 +1,13 @@
+name: facebook-com
+disabled: false
+strategy: async
+interval: 30.0
+checker:
+  type: url
+  parameters:
+    url: https://facebook.com
+    timeout: 2.0
+retryPolicy:
+  initialDelay: 1.0
+  backoffMultiplier: 2.0
+  maxRetries: 3
