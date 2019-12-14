@@ -6,7 +6,7 @@ checker:
   type: url
   parameters:
     url: https://facebook.com
-    timeout: 2.0
+    timeout: 5.0
 retryPolicy:
   initialDelay: 1.0
   backoffMultiplier: 2.0
