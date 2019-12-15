@@ -106,10 +106,15 @@ func (hc *HealthCheck) StopBackgroundCheck() {
 }
 
 // Result returns the result for the given healthcheck based on the healthcheck strategy.
-// async: returns the last healthcheck result.
+// default: picks up what's defined in the healthcheck definition.
 // sync: performs the healthcheck and returns the result.
-func (hc *HealthCheck) Result() Result {
-	if hc.Definition.Strategy == "sync" {
+// async: returns the last healthcheck result.
+func (hc *HealthCheck) Result(strategy string) Result {
+	if strategy == "default" {
+		strategy = hc.Definition.Strategy
+	}
+
+	if strategy == "sync" {
 		return hc.Check()
 	}
 

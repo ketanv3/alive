@@ -15,8 +15,9 @@ func healthCheckHandler(c *gin.Context) {
 	response := make(map[string]interface{})
 	statusCode := 200
 	detailed := c.DefaultQuery("full", "false") == "true"
+	strategy := c.DefaultQuery("strategy", "default")
 
-	for name, result := range runHealthCheck() {
+	for name, result := range runHealthCheck(strategy) {
 		if result.Status == "unhealthy" {
 			statusCode = 503
 		}

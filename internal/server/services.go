@@ -12,7 +12,7 @@ type hcResultPair struct {
 	result healthcheck.Result
 }
 
-func runHealthCheck() map[string]healthcheck.Result {
+func runHealthCheck(strategy string) map[string]healthcheck.Result {
 	var ch = make(chan hcResultPair, 0)
 	var wg sync.WaitGroup
 	var rg sync.WaitGroup
@@ -22,7 +22,7 @@ func runHealthCheck() map[string]healthcheck.Result {
 		wg.Add(1)
 		go func(hc *healthcheck.HealthCheck) {
 			defer wg.Done()
-			ch <- hcResultPair{name: hc.Definition.Name, result: hc.Result()}
+			ch <- hcResultPair{name: hc.Definition.Name, result: hc.Result(strategy)}
 		}(hc)
 	}
 
