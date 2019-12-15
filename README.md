@@ -40,9 +40,15 @@ Start the health-check server by passing the listen-port and the list of health-
 ./alive -p 8055 google-com.yaml
 ```
 
-The health-check metrics will then be available at:
-```http
+Health-check results can then be accessed at:
+```
+http://localhost:8055/health
 http://localhost:8055/health?full=true
+```
+
+Health-check strategy is defined in the definition file, but can be overridden with an extra query parameter:
+```
+http://localhost:8055/health?full=true&strategy=[default|sync|async]
 ```
 
 ## Issues and Suggestions
