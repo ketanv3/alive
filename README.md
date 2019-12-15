@@ -16,7 +16,6 @@ Health-checks are defined using `.yaml` configuration files. Let's create a simp
 
 ```yaml
 name: google-com
-disabled: false
 strategy: async
 interval: 30.0
 checker:

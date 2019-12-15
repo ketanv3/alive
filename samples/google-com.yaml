@@ -1,5 +1,4 @@
 name: google-com
-disabled: false
 strategy: async
 interval: 30.0
 checker:

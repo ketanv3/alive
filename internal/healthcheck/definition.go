@@ -3,7 +3,6 @@ package healthcheck
 // Definition is the basic definition of a healthcheck.
 type Definition struct {
 	Name        string      `yaml:"name" json:"name"`
-	Disabled    bool        `yaml:"disabled" json:"disabled"`
 	Strategy    string      `yaml:"strategy" json:"strategy"`
 	Interval    float64     `yaml:"interval" json:"interval"`
 	Checker     Checker     `yaml:"checker" json:"checker"`

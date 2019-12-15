@@ -1,12 +1,11 @@
-name: loopback
-disabled: false
+name: self-check
 strategy: sync
 checker:
   type: url
   parameters:
     url: http://localhost:8055/ping
-    timeout: 5
+    timeout: 1.0
 retryPolicy:
-  initialDelay: 1
+  initialDelay: 0.5
   backoffMultiplier: 2
   maxRetries: 3
