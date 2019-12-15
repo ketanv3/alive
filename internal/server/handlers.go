@@ -12,25 +12,23 @@ func pingHandler(c *gin.Context) {
 }
 
 func healthCheckHandler(c *gin.Context) {
-	// Collect the healthcheck results.
-	results := make(map[string]interface{})
+	response := make(map[string]interface{})
 	statusCode := 200
 	detailed := c.DefaultQuery("full", "false") == "true"
 
-	for _, hc := range registry.Get() {
-		result := hc.Result()
+	for name, result := range runHealthCheck() {
 		if result.Status == "unhealthy" {
 			statusCode = 503
 		}
 
 		if detailed {
-			results[hc.Definition.Name] = result
+			response[name] = result
 		} else {
-			results[hc.Definition.Name] = result.Status
+			response[name] = result.Status
 		}
 	}
 
-	c.JSON(statusCode, results)
+	c.JSON(statusCode, response)
 }
 
 func getRegistryHandler(c *gin.Context) {

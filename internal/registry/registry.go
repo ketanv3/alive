@@ -13,7 +13,7 @@ func Initialize(configs []string) error {
 		}
 
 		if hc.Definition.Strategy == "async" {
-			go hc.StartBackgroundCheck()
+			hc.StartBackgroundCheck()
 		}
 
 		registry[hc.Definition.Name] = hc

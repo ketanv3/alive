@@ -90,11 +90,14 @@ func (hc *HealthCheck) Check() Result {
 // StartBackgroundCheck starts the healthcheck in background (async strategy).
 func (hc *HealthCheck) StartBackgroundCheck() {
 	hc.RunBackgroundCheck = true
-	for hc.RunBackgroundCheck {
-		r := hc.Check()
-		fmt.Println("[background]", hc.Definition.Name, r.Status)
-		time.Sleep(time.Second * time.Duration(hc.Definition.Interval))
-	}
+
+	go func() {
+		for hc.RunBackgroundCheck {
+			r := hc.Check()
+			fmt.Println("[background]", hc.Definition.Name, r.Status)
+			time.Sleep(time.Second * time.Duration(hc.Definition.Interval))
+		}
+	}()
 }
 
 // StopBackgroundCheck stops the healthcheck in background.
