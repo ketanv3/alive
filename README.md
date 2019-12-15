@@ -1,5 +1,7 @@
 # alive <img src="./docs/heart.svg" width="80" align="right" />
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/48384621113d4c380813/maintainability)](https://codeclimate.com/github/ketanv3/alive/maintainability)
+
 Hyper-scalable health-checker written completely in Go
 + Fully configuration driven
 + Define custom health-checkers
